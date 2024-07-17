@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Define the Gallery component
+    function Gallery({ children }) {
+      return (
+        <div className="gallery">
+          {children}
+        </div>
+      );
+    }
+
+    // Define the Image component
+    function Image({ src, alt }) {
+      return <img src={src} alt={alt} />;
+    }
+
+    // Example usage of Gallery and Image components
+    ReactDOM.render(
+      <Gallery>
+        <Image src="https://media.istockphoto.com/id/1144763474/photo/little-boy-with-stomach-ache-children-healthcare-and-medicine-concept.webp?b=1&s=170667a&w=0&k=20&c=626oBsPsPksanUjsT0maw0dhXooIIPvEhho601MgE0Y= " alt="Placeholder 1" />
+        <Image src="https://media.istockphoto.com/id/1124576671/photo/little-girl-eating-hot-cake-in-cafe.webp?b=1&s=170667a&w=0&k=20&c=4fkEtHMa2msShbJtT3hOrWZQLwkjf-529HdY9Vks6hI= " alt="Placeholder 2" />
+        <Image src="https://media.istockphoto.com/id/1198990809/photo/portrait-of-small-little-cute-caucasian-boy-kid-eating-french-fries-potato-chips-at-the-table.webp?b=1&s=170667a&w=0&k=20&c=u_zRUjckO43fiakqXJCELPDzfX6g-b8Ocr13Qf6_stU= " alt="Placeholder 3" />
+        <Image src="https://media.istockphoto.com/id/601376594/photo/kid-girl-eating-healthy-vegetables.webp?b=1&s=170667a&w=0&k=20&c=RPVRTr5sYzFf-bbqKC7lU-HUWI3nYdQKx1Ix3NT3u6k= " alt="Placeholder 4" />
+      </Gallery>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+</html>
